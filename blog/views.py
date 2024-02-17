@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from blog.models import Post
-# Create your views here.
+
 
 def posts_list(request):
     posts = Post.objects.all()
@@ -15,8 +15,10 @@ def posts_list(request):
 
 def view_post(request, post_id):
     post = Post.objects.get(id=post_id)
+    time_delta = post.published_recently()
     context = {
-        "post": post
+        "post": post,
+        "published_test": time_delta,
     }
     return render(
         template_name="blog/post.html",
