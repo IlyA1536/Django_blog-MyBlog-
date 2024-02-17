@@ -16,5 +16,18 @@
         Upload date: {{post.published_date}}
         <br>
         Does it new? {{published_test}}
+        <br>
+        <h2>Comments:</h2>
+        <ul>
+            {%for comment in comments%}
+                <li>
+                {{comment.author_name}}
+                {{comment.text}}
+                <br>
+                {{comment.created_time}}
+                </li>
+            <br>
+            {%endfor%}
+        </ul>
     </div>
 </body>

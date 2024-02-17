@@ -19,10 +19,11 @@ def view_post(request, post_id):
     context = {
         "post": post,
         "published_test": time_delta,
+        "comments": post.comment.all(),
     }
     return render(
         request,
-        "blog/post.html",
+        "blog/post_detail.html",
         context,
 
     )
