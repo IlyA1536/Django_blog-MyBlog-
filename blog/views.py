@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog.models import Post
+from blog.models import Post, Author
 
 
 def posts_list(request):
@@ -21,7 +21,20 @@ def view_post(request, post_id):
         "published_test": time_delta,
     }
     return render(
-        template_name="blog/post.html",
-        context=context,
-        request=request
+        request,
+        "blog/post.html",
+        context,
+
+    )
+
+def author_posts(request, author_id):
+    author = Author.objects.get(id=author_id)
+    context = {
+        "author": author,
+        "posts": author.posts.all(),
+    }
+    return render(
+        request,
+        "blog/author_posts.html",
+        context,
     )
