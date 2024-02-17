@@ -1,0 +1,16 @@
+<head>
+    <title>Posts</title>
+</head>
+<body>
+    <a href="{%url 'posts_list'%}">Back</a>
+    <div>
+        <h2>{{post.title}}</h2>
+        <br>
+        <img src="/media/{{post.photo}}" alt="My image" style="height: 20%; width: 20%;">
+        <br>
+        Description: <br>
+        {{post.content}}
+        <br>
+        Upload date: {{post.published_date}}
+    </div>
+</body>
